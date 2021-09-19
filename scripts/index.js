@@ -8,13 +8,8 @@ const items = [
   'Решить задачу на Codewars'
 ];
 
-const itemTemplate = document.querySelector('#todolist-item-template').content;
-const container = document.querySelector('.todolist');
-
-const addItem = (text) => {
-  const item = itemTemplate.cloneNode(true);
-  item.querySelector('.todolist-item__text').textContent = text;
-  container.append(item);
-}
-
-items.forEach(addItem);
+const page = document.querySelector('.page');
+const createTodoListForm = (...arg) => new TodoListForm(...arg);
+const createTodoListItem = (...arg) => new TodoListItem(...arg);
+const todoList = new TodoList(items, createTodoListForm, createTodoListItem);
+todoList.render(page);
